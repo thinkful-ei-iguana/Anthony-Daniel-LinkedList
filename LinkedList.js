@@ -113,8 +113,6 @@ class LinkedList {
     }
     return currentNode;
   };
-
-
 }
 
 module.exports = LinkedList;
