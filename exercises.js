@@ -58,6 +58,33 @@ function reverse(list, curr, prev = null) {
   curr.next = prev;
 }
 
+const third = LinkedList => {
+  let current = LinkedList.head;
+
+  if (current === null || current.next.next === null) {
+    return null;
+  }
+
+  while (current !== null) {
+    if (current.next.next.next === null) {
+      return current.value;
+    }
+    current = current.next;
+  }
+  return null;
+};
+
+const middle = LinkedList => {
+  let slow = LinkedList.head;
+  let fast = LinkedList.head;
+
+  while (fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow.value;
+};
+
 const main = () => {
   const list1 = new LinkedList();
 
@@ -80,11 +107,12 @@ const main = () => {
   console.log(findLast(list1));
   reverse(list1, list1.head);
   display(list1);
+  console.log(third(list1));
+  console.log(middle(list1));
 };
 
 main();
 
-
-// 4) 
+// 4)
 // Removes any nodes with matching values
 // O(n^2)
