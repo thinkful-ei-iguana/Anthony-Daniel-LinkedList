@@ -85,6 +85,18 @@ const middle = LinkedList => {
   return slow.value;
 };
 
+const isCycle = list => {
+  const arr = [];
+  let current = list.head;
+
+  while(current !== null) {
+    if (arr.includes(current)) return true;
+    arr.push(current);
+    current = current.next;
+  }
+  return false;
+}
+
 const main = () => {
   const list1 = new LinkedList();
 
@@ -101,14 +113,26 @@ const main = () => {
   list1.remove('Tauhida');
 
   display(list1);
-  console.log(size(list1));
-  console.log(isEmpty(list1));
-  console.log(findPrevious(list1, 'Boomer'));
-  console.log(findLast(list1));
-  reverse(list1, list1.head);
-  display(list1);
-  console.log(third(list1));
-  console.log(middle(list1));
+  // console.log(size(list1));
+  // console.log(isEmpty(list1));
+  // console.log(findPrevious(list1, 'Boomer'));
+  // console.log(findLast(list1));
+  // reverse(list1, list1.head);
+  // display(list1);
+  // console.log(third(list1));
+  // console.log(middle(list1));
+
+  const cycle = new LinkedList;
+  cycle.insertLast('a');
+  cycle.insertLast('a');
+  cycle.insertLast('a');
+  let cycleCurr = cycle.head;
+  while (cycleCurr.next !== null) {
+    cycleCurr = cycleCurr.next;
+  }
+  cycleCurr.next = cycle.head;
+
+  console.log(isCycle(cycle));
 };
 
 main();
