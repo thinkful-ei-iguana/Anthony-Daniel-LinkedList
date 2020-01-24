@@ -1,4 +1,5 @@
 const LinkedList = require('./LinkedList');
+const Doubly = require('./Doubly');
 
 const display = LinkedList => {
   let node = LinkedList.head;
@@ -97,6 +98,20 @@ const isCycle = list => {
   return false;
 }
 
+const reverseDoub = (list) => {
+  let current = list.head;
+  while(current !== null) {
+    const next = current.next;
+    const temp = current.previous;
+    current.previous = current.next;
+    current.next = temp;
+    current = next;
+  }
+  const tempHead = list.head;
+  list.head = list.tail;
+  list.tail = tempHead;
+}
+
 const main = () => {
   const list1 = new LinkedList();
 
@@ -112,7 +127,7 @@ const main = () => {
   list1.insertAt('Kat', 2);
   list1.remove('Tauhida');
 
-  display(list1);
+  // display(list1);
   // console.log(size(list1));
   // console.log(isEmpty(list1));
   // console.log(findPrevious(list1, 'Boomer'));
@@ -122,17 +137,28 @@ const main = () => {
   // console.log(third(list1));
   // console.log(middle(list1));
 
-  const cycle = new LinkedList;
-  cycle.insertLast('a');
-  cycle.insertLast('a');
-  cycle.insertLast('a');
-  let cycleCurr = cycle.head;
-  while (cycleCurr.next !== null) {
-    cycleCurr = cycleCurr.next;
-  }
-  cycleCurr.next = cycle.head;
+  // const cycle = new LinkedList;
+  // cycle.insertLast('a');
+  // cycle.insertLast('a');
+  // cycle.insertLast('a');
+  // let cycleCurr = cycle.head;
+  // while (cycleCurr.next !== null) {
+  //   cycleCurr = cycleCurr.next;
+  // }
+  // cycleCurr.next = cycle.head;
 
-  console.log(isCycle(cycle));
+  // console.log(isCycle(cycle));
+
+  const double = new Doubly;
+  double.insertLast('Apollo');
+  double.insertLast('Boomer');
+  double.insertLast('Helo');
+  double.insertLast('Husker');
+  double.insertLast('Starbuck');
+  double.insertLast('Tauhida');
+  display(double);
+  reverseDoub(double);
+  display(double);
 };
 
 main();

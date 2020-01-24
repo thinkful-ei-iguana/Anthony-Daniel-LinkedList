@@ -15,7 +15,7 @@ class Doubly {
 
   insertFirst = item => {
     this.head = new _Node(item, this.head, null);
-    if (!this.head.next) {
+    if (this.head.next === null) {
       this.tail = this.head;
     }
   };
