@@ -51,6 +51,13 @@ const findLast = LinkedList => {
   return null;
 };
 
+function reverse(list, curr, prev = null) {
+  if (curr.next === null) {
+    list.head = curr;
+  } else reverse(list, curr.next, curr);
+  curr.next = prev;
+}
+
 const main = () => {
   const list1 = new LinkedList();
 
@@ -71,6 +78,13 @@ const main = () => {
   console.log(isEmpty(list1));
   console.log(findPrevious(list1, 'Boomer'));
   console.log(findLast(list1));
+  reverse(list1, list1.head);
+  display(list1);
 };
 
 main();
+
+
+// 4) 
+// Removes any nodes with matching values
+// O(n^2)
